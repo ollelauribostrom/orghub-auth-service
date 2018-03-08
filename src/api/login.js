@@ -23,7 +23,12 @@ export default function (config) {
         code: req.query.code,
         state: req.query.state,
       }, headers);
-      res.redirect(`${config.tokenRedirect}?token=${tokenRequest.data.access_token}`);
+      const userRequest = await axios.get('https://api.github.com/user', {
+        headers: {
+          Authorization: `token ${tokenRequest.data.access_token}`,
+        },
+      });
+      res.redirect(`${config.tokenRedirect}?token=${tokenRequest.data.access_token}&username=${userRequest.data.login}`);
     } catch (err) {
       res.redirect(`${config.tokenRedirect}?err=${err.message}`);
     }
