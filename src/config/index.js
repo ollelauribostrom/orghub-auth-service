@@ -7,7 +7,6 @@ env.load();
 export default {
   port: process.env.PORT || 5000,
   prefix: process.env.PREFIX || '/api',
-  dbAddress: process.env.DBADRESS,
   bodyParser: { limit: '100kb' },
   cors: { exposedHeaders: ['Link'] },
   logDirectory: path.join(__dirname, '/../../logs'),
@@ -21,5 +20,8 @@ export default {
   ghCallbackURL: process.env.GITHUB_CALLBACK_URL,
   ghLoginUrl: 'https://github.com/login/oauth/authorize',
   ghTokenUrl: 'https://github.com/login/oauth/access_token',
-  tokenRedirect: process.env.TOKEN_REDIRECT,
+  ghTokenRedirectUrl: process.env.GITHUB_TOKEN_REDIRECT_URL,
+  ghCredentials() {
+    return Buffer.from(`${this.ghClientID}:${this.ghClientSecret}`).toString('base64');
+  },
 };

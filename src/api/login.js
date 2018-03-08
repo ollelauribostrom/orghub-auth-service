@@ -1,5 +1,6 @@
 import { Router } from 'express';
 import axios from 'axios';
+import { getToken } from '../lib/token';
 
 export default function (config) {
   const router = Router();
@@ -16,21 +17,12 @@ export default function (config) {
 
   router.get('/callback', async (req, res, next) => {
     try {
-      const headers = { headers: { Accept: 'application/json' } };
-      const tokenRequest = await axios.post(config.ghTokenUrl, {
-        client_id: config.ghClientID,
-        client_secret: config.ghClientSecret,
-        code: req.query.code,
-        state: req.query.state,
-      }, headers);
-      const userRequest = await axios.get('https://api.github.com/user', {
-        headers: {
-          Authorization: `token ${tokenRequest.data.access_token}`,
-        },
-      });
-      res.redirect(`${config.tokenRedirect}?token=${tokenRequest.data.access_token}&username=${userRequest.data.login}`);
+      const token = await getToken(req, config);
+      const headers = { Authorization: `token ${token}` };
+      const user = await axios.get('https://api.github.com/user', { headers });
+      res.redirect(`${config.ghTokenRedirectUrl}?token=${token}&username=${user.data.login}`);
     } catch (err) {
-      res.redirect(`${config.tokenRedirect}?err=${err.message}`);
+      res.redirect(`${config.ghTokenRedirectUrl}?error=${err.message}`);
     }
   });
 

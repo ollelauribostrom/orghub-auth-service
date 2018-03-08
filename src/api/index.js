@@ -1,15 +1,15 @@
 import { Router } from 'express';
 import login from './login';
-import authorize from './authorize';
 import logout from './logout';
+import status from './status';
 
 export default function (config) {
   const api = Router();
 
   // API routes
   api.use('/login', login(config));
-  api.use('/authorize', authorize(config));
   api.use('/logout', logout(config));
+  api.use('/status', status(config));
 
   // Expose something at root
   api.get('/', (req, res) => res.json({ message: 'Yay, Auth service is up and running' }));

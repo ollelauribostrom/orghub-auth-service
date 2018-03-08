@@ -1,5 +1,4 @@
 import chai, { expect } from 'chai';
-import express from 'express';
 import sinon from 'sinon';
 import { errorHandler } from '../src/middleware';
 
