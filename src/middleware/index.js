@@ -2,7 +2,7 @@ import { Router } from 'express';
 import errorHandler from './errorHandler';
 import logger from './logger';
 
-export default function ({ config, db }) {
+export default function (config) {
   const routes = Router();
 
   // Middleware goes here

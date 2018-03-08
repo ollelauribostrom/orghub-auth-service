@@ -21,8 +21,10 @@
   "author": "Olle Lauri Boström (https://github.com/ollelauribostrom)",
   "license": "MIT",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.18.2",
     "cors": "^2.8.4",
+    "dotenv": "^5.0.1",
     "express": "^4.16.2",
     "express-rate-limit": "^2.11.0",
     "helmet": "^3.9.0",
