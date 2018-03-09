@@ -1,8 +1,8 @@
 import axios from 'axios';
 
-export async function tokenRequest(fn, req, res, config) {
+export async function tokenRequest(fn, req, res, config, type = 'tokens') {
   const base = 'https://api.github.com/applications';
-  const url = `${base}/${config.ghClientID}/tokens/${req.query.token}`;
+  const url = `${base}/${config.ghClientID}/${type}/${req.query.token}`;
   const headers = { Authorization: `Basic ${config.ghCredentials()}` };
   try {
     await fn(url, { headers });
@@ -18,6 +18,10 @@ export async function validateToken(req, res, config) {
 
 export async function deleteToken(req, res, config) {
   return tokenRequest(axios.delete, req, res, config);
+}
+
+export async function revokeGrant(req, res, config) {
+  return tokenRequest(axios.delete, req, res, config, 'grants');
 }
 
 export async function getToken(req, config) {
