@@ -17,10 +17,9 @@ export default {
   }),
   ghClientID: process.env.GITHUB_CLIENT_ID,
   ghClientSecret: process.env.GITHUB_CLIENT_SECRET,
-  ghCallbackURL: process.env.GITHUB_CALLBACK_URL,
+  ghTokenRedirectUrl: process.env.GITHUB_TOKEN_REDIRECT_URL,
   ghLoginUrl: 'https://github.com/login/oauth/authorize',
   ghTokenUrl: 'https://github.com/login/oauth/access_token',
-  ghTokenRedirectUrl: process.env.GITHUB_TOKEN_REDIRECT_URL,
   ghCredentials() {
     return Buffer.from(`${this.ghClientID}:${this.ghClientSecret}`).toString('base64');
   },

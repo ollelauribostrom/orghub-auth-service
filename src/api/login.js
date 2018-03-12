@@ -8,7 +8,7 @@ export default function (config) {
   router.get('/', (req, res) => {
     const base = config.ghLoginUrl;
     const id = config.ghClientID;
-    const redirect = config.ghCallbackURL;
+    const redirect = `${req.protocol}://${req.headers.host}${req.baseUrl}/callback`;
     const state = Math.random().toString(36).substring(7);
     const scope = 'admin:org,repo,user';
     const url = `${base}?client_id=${id}&redirect_url=${redirect}&scope=${scope}&state=${state}`;
