@@ -17,6 +17,7 @@ export default {
   }),
   ghClientID: process.env.GITHUB_CLIENT_ID,
   ghClientSecret: process.env.GITHUB_CLIENT_SECRET,
+  ghCallbackUrl: process.env.GITHUB_CALLBACK_URL,
   ghTokenRedirectUrl: process.env.GITHUB_TOKEN_REDIRECT_URL,
   ghLoginUrl: 'https://github.com/login/oauth/authorize',
   ghTokenUrl: 'https://github.com/login/oauth/access_token',
