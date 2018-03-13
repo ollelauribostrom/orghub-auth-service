@@ -25,6 +25,8 @@ export default {
     return Buffer.from(`${this.ghClientID}:${this.ghClientSecret}`).toString('base64');
   },
   setAppUrl(url) {
-    this.appUrl = url;
+    const urlComponents = url.split('/');
+    urlComponents.pop();
+    this.appUrl = urlComponents.join('/');
   },
 };

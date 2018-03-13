@@ -21,9 +21,9 @@ export default function (config) {
       const token = await getToken(req, config);
       const headers = { Authorization: `token ${token}` };
       const user = await axios.get('https://api.github.com/user', { headers });
-      res.redirect(`${config.appUrl}/token=${token}&username=${user.data.login}`);
+      res.redirect(`${config.appUrl}/+token=${token}&username=${user.data.login}`);
     } catch (err) {
-      res.redirect(`${config.appUrl}/error=${err.message}`);
+      res.redirect(`${config.appUrl}/+error=${err.message}`);
     }
   });
 
