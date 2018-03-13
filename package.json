@@ -68,7 +68,7 @@
   "homepage": "https://github.com/ollelauribostrom/orghub-auth-service#readme",
   "now": {
     "name": "orghub-auth-service",
-    "alias": "orghub-authservice.now.sh",
+    "alias": "orghub-auth-service.now.sh",
     "dotenv": true,
     "public": true,
     "type": "docker"
