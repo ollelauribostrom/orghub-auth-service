@@ -6,6 +6,7 @@ export default function (config) {
   const router = Router();
 
   router.get('/', (req, res) => {
+    config.setAppUrl(req.query.redirect);
     const base = config.ghLoginUrl;
     const id = config.ghClientID;
     const redirect = config.ghCallbackUrl;
@@ -20,9 +21,9 @@ export default function (config) {
       const token = await getToken(req, config);
       const headers = { Authorization: `token ${token}` };
       const user = await axios.get('https://api.github.com/user', { headers });
-      res.redirect(`${config.ghTokenRedirectUrl}?token=${token}&username=${user.data.login}`);
+      res.redirect(`${config.appUrl}/token=${token}&username=${user.data.login}`);
     } catch (err) {
-      res.redirect(`${config.ghTokenRedirectUrl}?error=${err.message}`);
+      res.redirect(`${config.appUrl}/error=${err.message}`);
     }
   });
 

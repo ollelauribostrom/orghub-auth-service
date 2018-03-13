@@ -18,10 +18,13 @@ export default {
   ghClientID: process.env.GITHUB_CLIENT_ID,
   ghClientSecret: process.env.GITHUB_CLIENT_SECRET,
   ghCallbackUrl: process.env.GITHUB_CALLBACK_URL,
-  ghTokenRedirectUrl: process.env.GITHUB_TOKEN_REDIRECT_URL,
+  appUrl: null,
   ghLoginUrl: 'https://github.com/login/oauth/authorize',
   ghTokenUrl: 'https://github.com/login/oauth/access_token',
   ghCredentials() {
     return Buffer.from(`${this.ghClientID}:${this.ghClientSecret}`).toString('base64');
+  },
+  setAppUrl(url) {
+    this.appUrl = url;
   },
 };
