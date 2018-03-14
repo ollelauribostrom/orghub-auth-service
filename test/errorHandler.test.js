@@ -2,7 +2,7 @@ import chai, { expect } from 'chai';
 import sinon from 'sinon';
 import { errorHandler } from '../src/middleware';
 
-describe('{unit}: api/todos.js', () => {
+describe('{unit}: errorHandler.js', () => {
   const req = sinon.stub();
   const next = sinon.stub();
   let res;
