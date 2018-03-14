@@ -11,7 +11,7 @@ export default function (config) {
     const id = config.ghClientID;
     const redirect = config.ghCallbackUrl;
     const state = Math.random().toString(36).substring(7);
-    const scope = 'admin:org,repo,user';
+    const scope = 'admin:org,admin:org_hook,repo,user';
     const url = `${base}?client_id=${id}&redirect_url=${redirect}&scope=${scope}&state=${state}`;
     res.redirect(url);
   });
