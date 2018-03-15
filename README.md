@@ -35,7 +35,7 @@ Publish to now
 --------------
 ```sh
 npm install now -g
-now --docker --public
+now && now alias
 # wait a bit..
 # visit url
 ```
