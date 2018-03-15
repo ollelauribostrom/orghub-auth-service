@@ -1,5 +1,16 @@
 # orghub/auth-service
-_todo_
+Auth service for OrgHub app
+
+> Deployed @ https://orghub-auth-service.now.sh/api/v1
+
+Endpoints
+---------
+| Endpoint              | Method    |
+|:--------------------- |:----------|
+| /login                | GET       |
+| /logout               | GET       |
+| /status               | GET       |
+| /unregister           | GET       |
 
 
 Commands
